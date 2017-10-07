@@ -1,0 +1,11 @@
+D:\labi\spp\parser\parser\bin\Debug\parser.exe.config
+D:\labi\spp\parser\parser\bin\Debug\parser.exe
+D:\labi\spp\parser\parser\bin\Debug\parser.pdb
+D:\labi\spp\parser\parser\bin\Debug\AngleSharp.dll
+D:\labi\spp\parser\parser\bin\Debug\AngleSharp.xml
+D:\labi\spp\parser\parser\obj\Debug\parser.csprojResolveAssemblyReference.cache
+D:\labi\spp\parser\parser\obj\Debug\parser.Form1.resources
+D:\labi\spp\parser\parser\obj\Debug\parser.Properties.Resources.resources
+D:\labi\spp\parser\parser\obj\Debug\parser.csproj.GenerateResource.Cache
+D:\labi\spp\parser\parser\obj\Debug\parser.exe
+D:\labi\spp\parser\parser\obj\Debug\parser.pdb
