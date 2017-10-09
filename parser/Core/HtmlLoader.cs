@@ -10,12 +10,21 @@ namespace parser.Core
 
         readonly string url;
 
+        private string GetFullUrl(string BaseUrl, string Prefix )
+        {
+            if (Prefix != null)
+                return $"{BaseUrl}/{Prefix}";
+            else
+                return $"{BaseUrl}";
+
+        }
+
         public HtmlLoader(IParserSettings settings)
         {
 
             client = new HttpClient();
 
-            url = $"{settings.BaseUrl}/{settings.Prefix}";
+            url = GetFullUrl(settings.BaseUrl, settings.Prefix);
         }
 
         public async Task<string> GetSourceByPageId(int id)

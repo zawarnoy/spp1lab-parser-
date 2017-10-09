@@ -1,4 +1,5 @@
 ﻿using parser.Core;
+using parser.Core.Dota2ru;
 using parser.Core.Habra;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,7 @@ namespace parser
         public Form1()
         {
             InitializeComponent();
-
-            parser = new ParserWorker<string[]>(
-                new HabraParser());
-
-            parser.OnCompleted += Parser_OnCompleted;
-            parser.OnNewData += Parser_OnNewData;
-
+            SelectCiteBox.SelectedIndex = 0;
         }
 
         private void Parser_OnNewData(object arg1, string[] arg2)
@@ -36,7 +31,9 @@ namespace parser
 
         private void Parser_OnCompleted(object obj)
         {
-            MessageBox.Show("Complete");
+            DateTime localDate = DateTime.Now;
+            LastUpdateLbl.Text = localDate.ToString() + "\r\nCite: " + parser.Settings.BaseUrl;
+
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -51,14 +48,60 @@ namespace parser
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            parser.Settings = new HabraSettings((int)NumericStart.Value, (int)NumericEnd.Value);
-            parser.Start();
 
+            Parser_Initialize();
+
+            parser.OnCompleted += Parser_OnCompleted;
+            parser.OnNewData += Parser_OnNewData;                       
+            ListTitles.Items.Clear();         
+            parser.Start();
         }
 
         private void buttonAbort_Click(object sender, EventArgs e)
         {
-            parser.Abort();
+            //parser.Abort();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Parser_Initialize()
+        {
+            switch (SelectCiteBox.SelectedIndex)
+            {
+                case 0:
+                    InitializeHabraParser();
+                    break;
+
+                case 1:
+                    InitializeDota2ruParser();
+                    break;
+
+            }
+        }
+
+        private void InitializeHabraParser()
+        {
+            parser = new ParserWorker<string[]>(new HabraParser());
+            parser.Settings = new HabraSettings((int)NumericStart.Value, (int)NumericEnd.Value);
+        }
+
+        private void InitializeDota2ruParser()
+        {
+            parser = new ParserWorker<string[]>(new Dota2ruParser());
+            parser.Settings = new Dota2ruSettings();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Dota2ru\Dota2ruParser.cs" />
+    <Compile Include="Core\Dota2ru\Dota2ruSettings.cs" />
     <Compile Include="Core\Habra\HabraParser.cs" />
     <Compile Include="Core\Habra\HabraSettings.cs" />
     <Compile Include="Core\HtmlLoader.cs" />
